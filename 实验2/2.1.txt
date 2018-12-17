@@ -1,0 +1,81 @@
+import UIKit
+
+//(1)
+let dictionary = [["name":"zhangsan","age":"20"],["name":"lisi","age":"18"]]
+let age = dictionary.map { $0["age"] ?? ""}.filter { $0 != ""}
+print(age)
+
+
+
+//(2)
+let strArray = ["12233","saffgg","gggggg","45565232","dsds","hhhhhh"]
+let choosedNumbers = strArray.filter{ Int($0) != nil}
+print("能转成int的字符串有：\(choosedNumbers)")
+
+
+//(3)
+let array = ["happy","birthday","to","you"]
+let connectArray = array.reduce("") {connectArray,letter in "\(connectArray),\(letter)"}
+print("连成字符串并以逗号分隔后为：\(connectArray)")
+
+
+
+//(4)
+var statisticsArray = [1,78,17,563,4444]
+let temp = statisticsArray.reduce((max:Int.min,min:Int.max,sum:0)){
+    (temp,i) in return (max(temp.max,i),min(temp.min,i),temp.sum+i)
+}
+print("最大值：\(temp.max)")
+print("最小值：\(temp.min)")
+print("和值：\(temp.sum)")
+
+
+
+//(5)
+func f1(x:Int) -> Int{
+    return 1
+}
+func f2() -> Int{
+    return 2
+}
+func f3(x:Double) ->Double{
+    return x
+}
+
+let f = [f1,f2,f3].filter{
+    return $0 is (Int) -> Int
+}
+
+
+//(6)
+extension Int{
+    mutating func sqrt() -> Double{
+        let a1:Double = Double(self)
+        let a2:Double = a1 * a1
+        return a2
+    }
+}
+var x:Int = 2
+print(x.sqrt())
+
+
+
+//(7)
+func getMaxAndMin<T: Comparable>(a: T...) -> (T, T) {
+    var max = a[0]
+    var min = a[0]
+    
+    for item in a {
+        if item > max {
+            max = item
+        } else if item < min {
+            min = item
+        }
+    }
+    
+    return (max, min)
+}
+
+print(getMaxAndMin(a: 1, 2, 3, 9, 2, 88))
+print(getMaxAndMin(a: 1.0, 2.0, 3.0, 9.0, 2.0, 88.0))
+print(getMaxAndMin(a: "a", "b", "A", "sss"))  
