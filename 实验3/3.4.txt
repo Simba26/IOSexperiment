@@ -1,0 +1,6 @@
+let image = try Data(contentsOf: URL(string: "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png")!) //通过指定的url获取图片，并转换为二进制数据
+
+if var url = defaultDoc.urls(for: .documentDirectory, in: .userDomainMask).first {
+    url.appendPathComponent("image.png")
+    try image.write(to: url)  //将转换后的二进制数据存储为png图片
+}

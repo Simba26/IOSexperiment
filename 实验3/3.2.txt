@@ -1,0 +1,5 @@
+let parentString = "Swift is a powerful and intuitive programming language for iOS, OS X, tvOS, and watchOS."  //删除指定子串之前的字符串
+let subString = parentString.replacingOccurrences(of: "OS", with: "")
+print(subString)
+let startIndex = parentString.index(parentString.startIndex,offsetBy:5)
+print(startIndex)

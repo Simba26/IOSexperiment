@@ -1,0 +1,6 @@
+let defaultDoc = FileManager.default  //获取默认工作路径
+//获取工作路径下的Document文件夹
+if var path = defaultDoc.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
+    path.append("/test.txt")
+    print(dic.write(toFile: path, atomically: true)) 
+}

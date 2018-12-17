@@ -1,0 +1,29 @@
+import UIKit
+
+func getDate(date: Date, zone: Int = 0) -> String {
+    let formatter = DateFormatter()  //实例化格式化类
+    formatter.dateFormat = "yyyy年MM月dd日EEEE aa KK:mm"  //指定格式化的格式
+    formatter.locale = Locale.current
+    if zone >= 0 {
+        formatter.timeZone = TimeZone(abbreviation: "UTC+\(zone):00")
+    } else {
+        formatter.timeZone = TimeZone(abbreviation: "UTC\(zone):00")
+    }
+    
+    let dateString = formatter.string(from: now)  //将传入的日期格式化为字符串
+    return dateString
+}
+
+let now = Date()  //获取当前时间日期
+
+let beijing = getDate(date: now, zone: +8)  //获取当前北京的时间
+print("北京: \(beijing)")
+
+let tokyo = getDate(date: now, zone: 9)  //获取当前东京的时间
+print("东京: \(tokyo)")
+
+let newYork = getDate(date: now, zone: -5)  //获取当前纽约的时间
+print("纽约: \(newYork)")
+
+let london = getDate(date: now)  //获取当前伦敦的时间
+print("伦敦: \(london)")
