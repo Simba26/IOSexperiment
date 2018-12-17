@@ -1,0 +1,54 @@
+func findPrimNum()->[Int]{
+    var changeArray = [2,3]
+    var recordIsPrim = 0
+    for x in 4...10000{
+        for y in 2..<x{
+            if x%y==0{
+                recordIsPrim+=1
+                break
+            }
+        }
+        if recordIsPrim==0{
+            changeArray.append(x)
+        }
+        recordIsPrim=0
+    }
+    return changeArray
+}
+//升序排列
+var primNum = searchPrimNum()
+primNum.sort()
+print("数组升序排序为:")
+print(primNum)
+//降序排列
+//第一种
+func compare(m:Int,n:Int)->Bool{
+    return m>n
+}
+primNum.sort(by:compare)
+print("第一种数组降序排列为:")
+print(primNum)
+//第二种
+primNum.sort(by:{
+    (m:Int,n:Int)->Bool in
+        return m>n
+})
+print("第二种数组降序排列为:")
+print(primNum)
+//第三种
+primNum.sort{
+    (m,n)->Bool in
+        return m>n
+}
+print("第三种数组降序排列为:")
+print(primNum)
+//第四种
+primNum.sort{(m,n) in
+    return m>n
+}
+print("第四种数组降序排列为:")
+print(primNum)
+//第五种
+primNum.sort(by:>)
+print("第五种数组降序排列为:")
+print(primNum)
